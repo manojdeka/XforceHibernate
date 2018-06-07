@@ -1,11 +1,23 @@
 package com.dev.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table(name="user_info")
 public class UserInfo {
-	
+	@Id @Column(name="user_id")
 	private int user_id;
+	
+	@Column(name="Firstname")
+	
 	private String firstname;
+	@Column(name="Lastname")
 	private String lastname;
+	@Column(name="email")
 	private String email;
+	@Column(name="password")
 	private String password;
 	public int getUser_id() {
 		return user_id;
