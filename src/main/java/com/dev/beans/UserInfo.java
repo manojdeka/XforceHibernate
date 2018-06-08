@@ -19,6 +19,11 @@ public class UserInfo {
 	private String email;
 	@Column(name="password")
 	private String password;
+	@Override
+	public String toString() {
+		return "UserInfo [user_id=" + user_id + ", firstname=" + firstname + ", lastname=" + lastname + ", email="
+				+ email + ", password=" + password + "]";
+	}
 	public int getUser_id() {
 		return user_id;
 	}

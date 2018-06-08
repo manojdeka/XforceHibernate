@@ -6,28 +6,27 @@ import org.hibernate.cfg.Configuration;
 
 import com.dev.beans.UserInfo;
 
-public class UserOpertations {
+public class UpdateUserInfo {
 
 	public static void main(String[] args) {
 		Configuration config= new Configuration().configure();
+		// File file =new File("path");
+		//config.configure(configFile);;
 		SessionFactory factory = config.buildSessionFactory();
 		Session session =factory.openSession();
 		
-		
-		UserInfo user =new UserInfo();
-		user.setUser_id(10);
-		user.setFirstname("blake");
-		user.setLastname("ryder");
-		user.setEmail("blakeryder@gmail.com");
-		user.setPassword("root");
-		
-		
+		//begin//
 		session.getTransaction().begin();
-		session.save(user);
+		
+		UserInfo user =session.get(UserInfo.class, 2);
+		user.setFirstname("mj");
+		//end//
 		session.getTransaction().commit();
+		System.out.println(user);
+		
+		
 		session.close();
 		factory.close();
-
 	}
 
 }
