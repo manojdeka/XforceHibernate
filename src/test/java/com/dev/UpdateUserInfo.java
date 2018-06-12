@@ -5,14 +5,15 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import com.dev.beans.UserInfo;
+import com.dev.utils.HibernateUtils;
 
 public class UpdateUserInfo {
 
 	public static void main(String[] args) {
-		Configuration config= new Configuration().configure();
+		//Configuration config= new Configuration().configure();
 		// File file =new File("path");
 		//config.configure(configFile);;
-		SessionFactory factory = config.buildSessionFactory();
+		SessionFactory factory = HibernateUtils.getSessionFactory();
 		Session session =factory.openSession();
 		
 		//begin//

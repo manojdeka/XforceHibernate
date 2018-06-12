@@ -1,32 +1,33 @@
 package com.dev;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 
 import com.dev.beans.UserInfo;
+import com.dev.dao.UserInfoDAO;
+import com.dev.factory.UserInfoDaoFactory;
 
 public class UserOpertations {
 
 	public static void main(String[] args) {
-		Configuration config= new Configuration().configure();
-		SessionFactory factory = config.buildSessionFactory();
-		Session session =factory.openSession();
-		
 		
 		UserInfo user =new UserInfo();
-		user.setUser_id(10);
-		user.setFirstname("blake");
-		user.setLastname("ryder");
-		user.setEmail("blakeryder@gmail.com");
+		user.setUser_id(12);
+		user.setFirstname("blke");
+		user.setLastname("ryer");
+		user.setEmail("blaryder@gmail.com");
 		user.setPassword("root");
 		
+		UserInfoDAO db = UserInfoDaoFactory.getDatabase();
+		boolean res =db.CreateProfile(user);
+		if (res)
+		{
+			System.out.println("success");
+		}
+		else
+		{
+			
+		System.out.println("failed");
+		}
 		
-		session.getTransaction().begin();
-		session.save(user);
-		session.getTransaction().commit();
-		session.close();
-		factory.close();
 
 	}
 
